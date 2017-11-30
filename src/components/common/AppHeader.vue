@@ -17,7 +17,7 @@
           <router-link class="nav-link" :to="'/'" exact>Popular subtitles</router-link>
         </li>
         <li class="nav-item">
-          <router-link class="nav-link" :to="'/browse'" exact>Browse</router-link>
+          <router-link class="nav-link" :to="'/browse'">Browse</router-link>
         </li>
       </ul>
       

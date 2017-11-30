@@ -10,10 +10,14 @@ if( isset($_GET) && $_GET['get']){
   
   switch($_GET['get']){
     case 'list':
-      $data = getList($_GET['count']);
+      // $data = getList($_GET['count']);
+      $data = search('Fast');
       break;
     case 'single':
       $data = getSingleCard(); // get view page
+      break;
+    case 'search':
+      $data = search($_GET['q']);
       break;
   };
   
@@ -25,7 +29,14 @@ if( isset($_GET) && $_GET['get']){
 } else {
   throw new Exception('Excuse me ?!');
 }
-  
+
+function getList($count){
+  $d = [];
+  for( $i = 0; $i < $count; $i++ ) {
+    $d[] = getSingleCard();
+  }
+  return $d;
+}
   
 function getSingleCard(){
   return [
@@ -38,12 +49,26 @@ function getSingleCard(){
   ];
 }
 
-function getList($count){
-  $d = [];
+function search($q){
+  // TODO: OHH JUST FOR FUN!
+  $results = file_get_contents("https://www.omdbapi.com/?apikey=766b5cbb&type=movie&page=1&s=" . $q);
+  $results = json_decode($results);
+
+  $searchResults = [];
   
-  for( $i = 0; $i < $count; $i++ ) {
-    $d[] = getSingleCard();
+  if($results->Response){
+    
+    foreach($results->Search as $movie){
+      $searchResults[] = array(
+        'id' => $movie->imdbID,
+        'title' => $movie->Title,
+        'image_uri' => $movie->Poster,
+        'release_date' => $movie->Year,
+        'total_subtitles' => rand(10,99),
+        'total_languages' => rand(2,30)
+      );
+    };
+    
   }
-  
-  return $d;
+  return $searchResults;
 }

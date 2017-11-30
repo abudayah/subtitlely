@@ -3,7 +3,8 @@
 		<router-link class="card card-subtitle" :to="{ name: 'view', params: { id: subtitle.id }}">
 			<div class="row no-gutters">
 				<div class="col-sm-5">
-					<img :src="require('@/assets/' + subtitle.image_uri)" class="img-fluid" />
+					<img :src="subtitle.image_uri" class="img-fluid" />
+					<!-- <img :src="require('@/assets/' + subtitle.image_uri)" class="img-fluid" /> -->
 				</div>
 				<div class="col-sm-7 info-col">
 					<h4>{{ subtitle.title }}</h4>

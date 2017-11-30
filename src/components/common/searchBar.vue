@@ -1,7 +1,10 @@
 <template>
   <form id="searchbar" v-on:submit="search()" @submit.prevent>
     <div class="input-group">
-      <input type="text" class="form-control" placeholder="Search for..." aria-label="Search for...">
+      <input class="form-control"
+      autofocus autocomplete="off"
+      placeholder="Search for.."
+      v-model="searchQuery">
       <span class="input-group-btn">
         <button class="btn btn-secondary" type="submit">Search</button>
       </span>
@@ -12,9 +15,18 @@
 <script>
 export default {
   name: 'search-bar',
+  data () {
+    return {
+      searchQuery: ''
+    }
+  },
   methods: {
     search () {
-      alert('thus submit was prevented!')
+      var value = this.searchQuery && this.searchQuery.trim()
+      if (!value) {
+        return
+      }
+      this.$router.push({path: 'browse', query: {q: value, get: 'search'}})
     }
   }
 }
