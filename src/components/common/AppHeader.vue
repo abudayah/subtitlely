@@ -1,7 +1,25 @@
-<template>  
+<template>
   <header id="app-header">
-		<router-link v-bind:to="'/'">Home</router-link>
-		<router-link v-bind:to="'/about'">About</router-link>		
+    <div class="container">
+      <div class="row">
+        <div class="col-md">
+          SubtitleVue
+        </div>
+        <div class="col-md text-right">
+          Subtitle Language <a href="#">Arabic</a>
+        </div>
+      </div>
+      
+      <ul class="nav">
+        <li class="nav-item">
+          <router-link class="nav-link" :to="'/'">Popular subtitles</router-link>
+        </li>
+        <li class="nav-item">
+          <router-link class="nav-link" :to="'/browse'">Browse</router-link>
+        </li>
+      </ul>
+      
+    </div>
   </header>
 </template>
 
@@ -13,6 +31,13 @@ export default {
 
 <style lang="scss" scoped>
 #app-header{
-	background-color: #eee;
+  padding-top: 20px;
+	background-color: #f0f3f4;
+  min-height: 80px;
+}
+.nav-link{
+  &.active{
+    font-weight: bold
+  }
 }
 </style>
