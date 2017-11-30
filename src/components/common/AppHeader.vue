@@ -3,19 +3,21 @@
     <div class="container">
       <div class="row">
         <div class="col-md">
-          SubtitleVue
+          <b>Subtitle</b><i>Vue</i>
         </div>
         <div class="col-md text-right">
           Subtitle Language <a href="#">Arabic</a>
         </div>
       </div>
       
+      <search-bar></search-bar>
+      
       <ul class="nav">
         <li class="nav-item">
-          <router-link class="nav-link" :to="'/'">Popular subtitles</router-link>
+          <router-link class="nav-link" :to="'/'" exact>Popular subtitles</router-link>
         </li>
         <li class="nav-item">
-          <router-link class="nav-link" :to="'/browse'">Browse</router-link>
+          <router-link class="nav-link" :to="'/browse'" exact>Browse</router-link>
         </li>
       </ul>
       
@@ -36,8 +38,10 @@ export default {
   min-height: 80px;
 }
 .nav-link{
+  border-bottom: 4px solid transparent;
+  
   &.active{
-    font-weight: bold
+    border-bottom: 4px solid;
   }
 }
 </style>

@@ -3,9 +3,9 @@
 		<router-link class="card card-subtitle" :to="{ name: 'view', params: { id: subtitle.id }}">
 			<div class="row no-gutters">
 				<div class="col-sm-5">
-					<img :src="require('@/assets/' + subtitle.image_uri)" width="110" />
+					<img :src="require('@/assets/' + subtitle.image_uri)" class="img-fluid" />
 				</div>
-				<div class="col-sm-7">
+				<div class="col-sm-7 info-col">
 					<h4>{{ subtitle.title }}</h4>
 					<p class="text-muted">{{ subtitle.release_date }}</p>
 					<div><strong>{{ subtitle.total_subtitles }}</strong> Subtitles</div>
@@ -45,5 +45,8 @@ export default {
 		margin: 8px 0 0;
 		font-weight: bold;
 	}
+}
+.info-col{
+	padding-left: 10px;
 }
 </style>

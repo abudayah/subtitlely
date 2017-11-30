@@ -2,9 +2,9 @@
   <div class="container">
     <div class="row no-gutters">
       <div class="col-sm-4">
-        <img :src="require('@/assets/' + subtitle.image_uri)" width="350" />
+        <img :src="require('@/assets/' + subtitle.image_uri)" class="img-fluid" />
       </div>
-      <div class="col-sm-7">
+      <div class="col-sm-7 info-col">
         <h4>{{ subtitle.title }}</h4>
         <p class="text-muted">{{ subtitle.release_date }}</p>
         <div><strong>{{ subtitle.total_subtitles }}</strong> Subtitles</div>
@@ -48,6 +48,8 @@ export default {
 }
 </script>
 
-<style lang="scss">
-
+<style lang="scss" scoped>
+.info-col{
+  padding-left: 15px;
+}
 </style>
