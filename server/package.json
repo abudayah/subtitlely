@@ -1,5 +1,5 @@
 {
-  "name": "feathers-app",
+  "name": "server",
   "description": "",
   "version": "0.0.0",
   "homepage": "",
@@ -9,7 +9,7 @@
   ],
   "author": {
     "name": "Anas Abudayah",
-    "email": "aabudayah@souq.com"
+    "email": "anas.abudayah@gmail.com"
   },
   "contributors": [],
   "bugs": {},
@@ -37,13 +37,17 @@
     "feathers-hooks": "^2.1.2",
     "feathers-hooks-common": "^3.10.0",
     "feathers-rest": "^1.8.1",
+    "feathers-sequelize": "^3.0.0",
     "feathers-socketio": "^2.0.1",
+    "hashids": "^1.1.4",
     "helmet": "^3.9.0",
+    "mysql2": "^1.5.1",
+    "sequelize": "^4.28.0",
     "serve-favicon": "^2.4.5",
     "winston": "^2.4.0"
   },
   "devDependencies": {
-    "eslint": "^4.12.1",
+    "eslint": "^4.13.1",
     "mocha": "^4.0.1",
     "request": "^2.83.0",
     "request-promise": "^4.2.2"
