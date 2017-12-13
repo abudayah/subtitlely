@@ -8,18 +8,8 @@ module.exports = function (options = {}) { // eslint-disable-line no-unused-vars
     // that resolves with the `hook` object for asynchronous operations
     
     const title = hook.data.title.substring(0, 255).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
-    const genre = hook.data.genre;
-    const imdb_rating = hook.data.imdb_rating;
-    const mpaa = hook.data.mpaa;
-    const release_date = hook.data.release_date;
     
-    hook.data = {
-      title,
-      genre,
-      imdb_rating,
-      mpaa,
-      release_date
-    };
+    hook.data.title = title;
     
     return Promise.resolve(hook);
   };

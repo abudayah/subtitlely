@@ -10,7 +10,7 @@ module.exports = {
     get: [],
     create: [ processMovie() ],
     update: [],
-    patch: [ processMovie() ],
+    patch: [],
     remove: []
   },
 
@@ -20,7 +20,7 @@ module.exports = {
     get: [],
     create: [ hashid() ],
     update: [],
-    patch: [ hashid() ],
+    patch: [],
     remove: []
   },
 
