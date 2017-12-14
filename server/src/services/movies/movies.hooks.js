@@ -1,14 +1,14 @@
 'use strict';
 
-const processMovie = require('../../hooks/process-movie');
-const hashid = require('../../hooks/hashid');
+const beforeCreate = require('../../hooks/before-create');
+const afterCreate = require('../../hooks/after-create');
 
 module.exports = {
   before: {
     all: [],
     find: [],
     get: [],
-    create: [ processMovie() ],
+    create: [ beforeCreate() ],
     update: [],
     patch: [],
     remove: []
@@ -18,7 +18,7 @@ module.exports = {
     all: [],
     find: [],
     get: [],
-    create: [ hashid() ],
+    create: [ afterCreate() ],
     update: [],
     patch: [],
     remove: []

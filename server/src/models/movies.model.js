@@ -34,12 +34,23 @@ module.exports = function (app) {
     release_date: {
       type: DataTypes.INTEGER,
       allowNull: false
+    },
+    created_at: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      default: Date.now()
+    },
+    updated_at: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      default: Date.now()
     }
   }, {
-    createdAt   : 'created_at',
-    updatedAt   : 'updated_at',
-    timestamps  : true,
-    underscored : true,
+    // TODO: UNIX Timestamp
+    timestamps  : false,
+    // underscored : true,
+    // createdAt   : 'created_at',
+    // updatedAt   : 'updated_at',
     hooks: {
       beforeCount(options) {
         options.raw = true;

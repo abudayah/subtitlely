@@ -42,7 +42,7 @@
     "hashids": "^1.1.4",
     "helmet": "^3.9.0",
     "mysql2": "^1.5.1",
-    "sequelize": "^4.28.0",
+    "sequelize": "^4.28.1",
     "serve-favicon": "^2.4.5",
     "winston": "^2.4.0"
   },
