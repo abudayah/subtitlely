@@ -60,8 +60,7 @@ module.exports = function (app) {
   subtitles.associate = function (models) { // eslint-disable-line no-unused-vars
     // Define associations here
     // See http://docs.sequelizejs.com/en/latest/docs/associations/
-    // models.subtitles.belongsTo(models.movies, {foreignKey: 'movie_id'});
-    // console.log(models); // eslint-disable-line
+    subtitles.belongsTo(models.movies, {foreignKey: 'movie_id'});
   };
 
   return subtitles;

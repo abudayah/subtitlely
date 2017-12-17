@@ -55,7 +55,7 @@ module.exports = function (app) {
     // updatedAt   : 'updated_at',
     hooks: {
       beforeCount(options) {
-        options.raw = true;
+        options.raw = false;
       }
     }
   });
@@ -63,9 +63,7 @@ module.exports = function (app) {
   movies.associate = function (models) { // eslint-disable-line no-unused-vars
     // Define associations here
     // See http://docs.sequelizejs.com/en/latest/docs/associations/
-    // console.log(models); // eslint-disable-line
-    // models.movies.hasMany(models.subtitles, {foreignKey: 'movie_id'});
-    // console.log(models); // eslint-disable-line
+    movies.hasMany(models.subtitles, {foreignKey: 'movie_id'});
   };
 
   return movies;
