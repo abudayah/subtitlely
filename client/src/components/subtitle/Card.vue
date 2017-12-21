@@ -44,10 +44,12 @@ export default {
 	h4{
 		font-size: 18px;
 		margin: 8px 0 0;
-		font-weight: bold;
+    color: #111;
 	}
 }
 .info-col{
 	padding-left: 10px;
+  font-size: 13px;
+  color: #666
 }
 </style>

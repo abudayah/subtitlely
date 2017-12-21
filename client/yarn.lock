@@ -2,6 +2,22 @@
 # yarn lockfile v1
 
 
+"@fortawesome/fontawesome-free-brands@^5.0.2":
+  version "5.0.2"
+  resolved "https://registry.yarnpkg.com/@fortawesome/fontawesome-free-brands/-/fontawesome-free-brands-5.0.2.tgz#a1cc602eec40a379a3dd8a44c78b31110dd3d3d3"
+
+"@fortawesome/fontawesome-free-solid@^5.0.2":
+  version "5.0.2"
+  resolved "https://registry.yarnpkg.com/@fortawesome/fontawesome-free-solid/-/fontawesome-free-solid-5.0.2.tgz#090ce2c59dd5ec76983f3da8a43e1ab0321b42d5"
+
+"@fortawesome/fontawesome@^1.1.0":
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/@fortawesome/fontawesome/-/fontawesome-1.1.0.tgz#2a949fa46d96e41092e67218b42579f8e54c7b7f"
+
+"@fortawesome/vue-fontawesome@^0.0.22":
+  version "0.0.22"
+  resolved "https://registry.yarnpkg.com/@fortawesome/vue-fontawesome/-/vue-fontawesome-0.0.22.tgz#720457bda0e5866265e5e0f8fe4fbd857fa5653f"
+
 "@types/strip-bom@^3.0.0":
   version "3.0.0"
   resolved "https://registry.yarnpkg.com/@types/strip-bom/-/strip-bom-3.0.0.tgz#14a8ec3956c2e81edb7520790aecf21c290aebd2"
@@ -1064,6 +1080,10 @@ boom@5.x.x:
   resolved "https://registry.yarnpkg.com/boom/-/boom-5.2.0.tgz#5dd9da6ee3a5f302077436290cb717d3f4a54e02"
   dependencies:
     hoek "4.x.x"
+
+bootstrap@4.0.0-beta.2:
+  version "4.0.0-beta.2"
+  resolved "https://registry.yarnpkg.com/bootstrap/-/bootstrap-4.0.0-beta.2.tgz#4d67d2aa2219f062cd90bc1247e6747b9e8fd051"
 
 brace-expansion@^1.0.0, brace-expansion@^1.1.7:
   version "1.1.8"
