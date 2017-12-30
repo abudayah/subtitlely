@@ -13,8 +13,9 @@
 </template>
 
 <script>
+import * as services from '../services'
 import SubtitleCard from '@/components/subtitle/Card'
-import axios from 'axios'
+// import axios from 'axios'
 
 export default {
   name: 'Home',
@@ -31,17 +32,13 @@ export default {
   },
   methods: {
     getPopular () {
-      axios.get('http://localhost:8000/api.php', {
-        params: {
-          get: 'list',
-          count: 9
+      services.movieService.find({
+        query: {
+          $limit: 10
         }
-      })
-      .then(function (response) {
-        this.popular = response.data
-      }.bind(this))
-      .catch(function (error) {
-        console.log(error)
+      }).then(result => {
+        this.popular = result.data
+        console.log(JSON.stringify(result))
       })
     }
   }
