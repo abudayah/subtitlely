@@ -2,11 +2,11 @@
   <div id="home" class="container">
     
     <div id="popularSubs" class="row">
-      <subtitle-card
-        v-for="subtitle in popular"
-        v-bind:subtitle="subtitle"
-        v-bind:key="subtitle.id">
-      </subtitle-card>
+      <movie-card
+        v-for="movie in popular"
+        v-bind:movie="movie"
+        v-bind:key="movie.id">
+      </movie-card>
     </div>
     
   </div>
@@ -14,13 +14,12 @@
 
 <script>
 import * as services from '../services'
-import SubtitleCard from '@/components/subtitle/Card'
-// import axios from 'axios'
+import MovieCard from '@/components/movie/Card'
 
 export default {
   name: 'Home',
   components: {
-    SubtitleCard
+    MovieCard
   },
   data () {
     return {
@@ -29,17 +28,21 @@ export default {
   },
   created () {
     this.getPopular()
+    this.clearSearchBar()
   },
   methods: {
     getPopular () {
       services.movieService.find({
         query: {
-          $limit: 10
+          $limit: 6
         }
       }).then(result => {
         this.popular = result.data
         console.log(JSON.stringify(result))
       })
+    },
+    clearSearchBar () {
+      document.querySelector('#searchbar input.form-control').value = ''
     }
   }
 }

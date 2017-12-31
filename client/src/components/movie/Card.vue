@@ -1,16 +1,16 @@
 <template>
 	<div class="col-md-4">
-		<router-link class="card card-subtitle" :to="{ name: 'view', params: { id: subtitle.id }}">
+		<router-link class="card card-movie" :to="{ name: 'view', params: { id: movie.id }}">
 			<div class="row no-gutters">
 				<div class="col-sm-5">
-					<img :src="subtitle.image_uri" class="img-fluid" />
-					<!-- <img :src="require('@/assets/' + subtitle.image_uri)" class="img-fluid" /> -->
+					<img :src="imageUrl" class="img-fluid" />
+					<!-- <img :src="require('@/assets/' + movie.image_uri)" class="img-fluid" /> -->
 				</div>
 				<div class="col-sm-7 info-col">
-					<h4>{{ subtitle.title }}</h4>
-					<p class="text-muted">{{ subtitle.release_date }}</p>
-					<div><strong>{{ subtitle.total_subtitles }}</strong> Subtitles</div>
-					<div><strong>{{ subtitle.total_languages }}</strong> Languages</div>
+					<h4>{{ movie.title }}</h4>
+					<p class="text-muted">{{ movie.release_date }}</p>
+					<div><strong>{{ movie.total_subtitles }}</strong> Subtitles</div>
+					<div><strong>{{ movie.total_languages }}</strong> Languages</div>
 				</div>
 			</div>
 		</router-link>
@@ -19,13 +19,18 @@
 
 <script>
 export default {
-  name: 'subtitle-card',
-  props: ['subtitle']
+  name: 'movie-card',
+  props: ['movie'],
+  computed: {
+    imageUrl () {
+      return (this.movie.image_url) ? this.movie.image_url : 'http://via.placeholder.com/155x230'
+    }
+  }
 }
 </script>
 
 <style lang="scss" scoped>
-.card-subtitle{
+.card-movie{
 	box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
 	color: inherit;
 	font-size: 14px;

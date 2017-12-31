@@ -1,30 +1,27 @@
 <template>
   <div id="browse" class="container">
 
-    <h4 v-if="query">Search results for: {{query}}</h4>
-    <h4 v-else>Loading..</h4>
-    
-    <br>
+    <h4 v-show="query">Search results for: {{query}}<hr></h4>
     
     <div id="browse" class="row">
-      <subtitle-card
-        v-for="subtitle in results"
-        v-bind:subtitle="subtitle"
-        v-bind:key="subtitle.id">
-      </subtitle-card>
+      <movie-card
+        v-for="movie in results"
+        v-bind:movie="movie"
+        v-bind:key="movie.id">
+      </movie-card>
     </div>
     
   </div>
 </template>
 
 <script>
-import SubtitleCard from '@/components/subtitle/Card'
-import axios from 'axios'
+import * as services from '../services'
+import MovieCard from '@/components/movie/Card'
 
 export default {
   name: 'Browse',
   components: {
-    SubtitleCard
+    MovieCard
   },
   data () {
     return {
@@ -37,23 +34,37 @@ export default {
   },
   watch: {
     // call again the method if the route changes
-    '$route': 'getSearchResults'
+    '$route.query.q': 'getSearchResults'
   },
   methods: {
     getSearchResults () {
-      axios.get('http://localhost:8000/api.php', {
-        params: {
-          get: 'search',
-          q: this.$route.query.q
-        }
-      })
-      .then(function (response) {
-        this.results = response.data
-        this.query = this.$route.query.q
-      }.bind(this))
-      .catch(function (error) {
-        console.log(error)
-      })
+      this.query = this.$route.query.q
+      if (typeof this.query !== 'undefined') {
+        services.movieService.find({
+          query: {
+            title: {
+              $like: '%' + this.query + '%'
+            },
+            $limit: 9,
+            $sort: {
+              created_at: -1
+            }
+          }
+        }).then(result => {
+          this.results = result.data
+        })
+      } else {
+        services.movieService.find({
+          query: {
+            $limit: 9,
+            $sort: {
+              created_at: -1
+            }
+          }
+        }).then(result => {
+          this.results = result.data
+        })
+      }
     }
   }
 }

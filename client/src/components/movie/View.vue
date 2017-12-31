@@ -1,33 +1,33 @@
 <template>
-  <div class="container subtitle-view">
+  <div class="container movie-view">
     <div class="card">
       <div class="row no-gutters">
         <div class="col-sm-7">
           <div class="row no-gutters">
             <div class="col-sm-4">
-              <img :src="require('@/assets/' + subtitle.image_uri)" class="img-fluid" />
+              <!-- <img :src="require('@/assets/' + movie.image_uri)" class="img-fluid" /> -->
             </div>
             <div class="col-sm-8">
               <div class="movie-info">
-                <h1>{{ subtitle.title }}</h1>
-                <div class="movie-status"><a href="#">{{ subtitle.total_languages }} Language / {{ subtitle.total_subtitles }} subtitles</a></div>
+                <h1>{{ movie.title }}</h1>
+                <div class="movie-status"><a href="#">{{ movie.total_languages }} Language / {{ movie.total_movies }} movies</a></div>
                 
                 <div class="row movie-info-grid">
                   <div class="col-sm-6">
                     <span>Release Date</span>
-                    <p>{{ subtitle.release_date }}</p>
+                    <p>{{ movie.release_date }}</p>
                   </div>
                   <div class="col-sm-6">
                     <span>IMDB</span>
-                    <p>8.9/10</p>
+                    <p>{{ movie.imdb_rating }}/10</p>
                   </div>
                   <div class="col-sm-6">
                     <span>Genre</span>
-                    <p>Action, Drama</p>
+                    <p>{{ movie.genre }}</p>
                   </div>
                   <div class="col-sm-6">
                     <span>MPAA</span>
-                    <p>R</p>
+                    <p>{{ movie.mpaa }}</p>
                   </div>
                 </div>
               </div>
@@ -35,7 +35,7 @@
           </div>
         </div>
         <div class="col-sm-5 download-area">
-          <span>Download the best accurate subtitle for Arabic language (<a href="#">other languages</a>)</span>
+          <span>Download the best accurate movie for Arabic language (<a href="#">other languages</a>)</span>
           
           <download-button></download-button>
           
@@ -48,12 +48,12 @@
 </template>
 
 <script>
-import axios from 'axios'
-import DownloadButton from '@/components/subtitle/DownloadButton'
-import Revisions from '@/components/subtitle/Revisions'
+import * as services from '../../services'
+import DownloadButton from '@/components/movie/DownloadButton'
+import Revisions from '@/components/movie/Revisions'
 
 export default {
-  name: 'subtitle-view',
+  name: 'movie-view',
   components: {
     DownloadButton,
     Revisions
@@ -63,23 +63,27 @@ export default {
   },
   data () {
     return {
-      subtitle: []
+      id: this.$route.params.id,
+      movie: []
     }
   },
   methods: {
     fetchSingle () {
-      axios.get('http://localhost:8000/api.php', {
-        params: {
-          get: 'single',
-          id: this.$route.params.id
-        }
-      })
-      .then(function (response) {
-        this.subtitle = response.data
-      }.bind(this))
-      .catch(function (error) {
-        console.log(error)
-      })
+      if (typeof this.id !== 'undefined') {
+        services.movieService.find({
+          query: {
+            id: this.id
+          }
+        }).then(result => {
+          this.movie = result.data[0]
+          console.log(result) // eslint-disable-line
+        })
+      }
+      // @TODO what about this ?
+      // services.movieService.get(this.$route.params.id).then(result => {
+      //   this.movie = result.data
+      //   console.log(JSON.stringify(result))
+      // })
     }
   }
 }

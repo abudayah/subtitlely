@@ -4,7 +4,7 @@ import Router from 'vue-router'
 // register pages
 import Home from '@/components/Home'
 import Browse from '@/components/Browse'
-import View from '@/components/subtitle/View'
+import View from '@/components/movie/View'
 
 // register globally used common components
 import AppHeader from '@/components/common/AppHeader'
@@ -30,7 +30,7 @@ export default new Router({
       component: Browse
     },
     {
-      path: '/subtitle/:id',
+      path: '/movie/:id',
       name: 'view',
       props: true,
       component: View

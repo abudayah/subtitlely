@@ -21,7 +21,7 @@ export default {
   components: { FontAwesomeIcon },
   data () {
     return {
-      searchQuery: ''
+      searchQuery: this.$route.query.q
     }
   },
   methods: {
@@ -30,7 +30,12 @@ export default {
       if (!value) {
         return
       }
-      this.$router.push({path: 'browse', query: {q: value, get: 'search'}})
+      this.$router.push({
+        path: 'browse',
+        query: {
+          q: value
+        }
+      })
     }
   }
 }
