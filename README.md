@@ -2,7 +2,7 @@
 
 node version: `lts/carbon`
 
-### Run server side:
+### Run server side
 - create mysql database
 - change database connection from: `server/config/default.json` 
 - import the database from: `server/database/subtitlely.sql`
