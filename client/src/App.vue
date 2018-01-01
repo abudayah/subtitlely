@@ -16,7 +16,9 @@ export default {
 
 <style lang="scss">
 @import "./assets/scss/_imports";
-
+html {
+  font-size: 14px;
+}
 .main-content{
   padding: 30px 0;
 }

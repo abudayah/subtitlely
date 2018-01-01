@@ -3,6 +3,10 @@
 
     <h4 v-show="query">Search results for: {{query}}<hr></h4>
     
+    <search-filters v-bind:total="total"></search-filters>
+    
+    <hr>
+    
     <div id="browse" class="row">
       <movie-card
         v-for="movie in results"
@@ -16,16 +20,19 @@
 
 <script>
 import * as services from '../services'
+import SearchFilters from '@/components/search/filters'
 import MovieCard from '@/components/movie/Card'
 
 export default {
   name: 'Browse',
   components: {
-    MovieCard
+    MovieCard,
+    SearchFilters
   },
   data () {
     return {
       query: '',
+      total: 0,
       results: []
     }
   },
@@ -52,6 +59,7 @@ export default {
           }
         }).then(result => {
           this.results = result.data
+          this.total = result.total
         })
       } else {
         services.movieService.find({
@@ -63,6 +71,7 @@ export default {
           }
         }).then(result => {
           this.results = result.data
+          this.total = result.total
         })
       }
     }

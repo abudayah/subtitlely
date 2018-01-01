@@ -31,7 +31,7 @@ export default {
         return
       }
       this.$router.push({
-        path: 'browse',
+        path: '/browse',
         query: {
           q: value
         }

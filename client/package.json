@@ -21,6 +21,8 @@
     "@fortawesome/fontawesome-free-solid": "^5.0.2",
     "@fortawesome/vue-fontawesome": "^0.0.22",
     "axios": "^0.17.1",
+    "jquery": "^3.2.1",
+    "popper.js": "^1.12.9",
     "sass-loader": "^6.0.6",
     "vue": "^2.5.2",
     "vue-router": "^3.0.1"
