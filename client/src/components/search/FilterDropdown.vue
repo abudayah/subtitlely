@@ -4,11 +4,7 @@
       {{ label }}
     </button>
     <div class="dropdown-menu">
-      <a class="dropdown-item" href="#">Action</a>
-      <a class="dropdown-item" href="#">Another action</a>
-      <a class="dropdown-item" href="#">Something else here</a>
-      <div class="dropdown-divider"></div>
-      <a class="dropdown-item" href="#">Separated link</a>
+      <a v-for="(value, key) in options" class="dropdown-item" :href="'#' + key">{{ value }}</a>
     </div>
   </div>
 </template>
@@ -19,7 +15,10 @@ import 'bootstrap/js/src/dropdown'
 
 export default {
   name: 'filter-dropdown',
-  props: ['label']
+  props: [
+    'label',
+    'options'
+  ]
 }
 </script>
 
