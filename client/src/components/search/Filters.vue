@@ -28,9 +28,9 @@ export default {
     FilterDropdown
   },
   computed: {
-    mpaa: function () {
+    mpaa () {
       let mpaa = []
-      STATIC.MPAA.forEach(function (el) {
+      STATIC.MPAA.forEach((el) => {
         mpaa.push(el.label)
       })
       return mpaa

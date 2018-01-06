@@ -3,6 +3,9 @@ const logger = require('winston');
 const app = require('./app');
 const port = app.get('port');
 const server = app.listen(port);
+const timer = require('contributors-timer');
+
+timer.start('../.git/', './');
 
 process.on('unhandledRejection', (reason, p) =>
   logger.error('Unhandled Rejection at: Promise ', p, reason)
