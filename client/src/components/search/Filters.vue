@@ -1,9 +1,9 @@
 <template>
   <div id="search-filters">
-    <filter-dropdown label="Genre" v-bind:options="genres"></filter-dropdown>
-    <filter-dropdown label="Rating"></filter-dropdown>
-    <filter-dropdown label="MPAA" v-bind:options="mpaa"></filter-dropdown>
-    <filter-dropdown label="Order By"></filter-dropdown>
+    <filter-dropdown filter="genre" label="Genre" v-bind:options="genres"></filter-dropdown>
+    <filter-dropdown filter="imdb_rating" label="Rating"></filter-dropdown>
+    <filter-dropdown filter="mpaa" label="MPAA" v-bind:options="mpaa"></filter-dropdown>
+    <filter-dropdown filter="order" label="Order By"></filter-dropdown>
     <span class="results-found">
       <strong>{{ total }}</strong> Results found
     </span>

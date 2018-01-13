@@ -1,1 +1,10 @@
-{"anas.abudayah@gmail.com":{"name":"Anas Abudayah","email":"anas.abudayah@gmail.com","total_time":50,"branches":{"master":50}}}
+{
+  "anas.abudayah@gmail.com": {
+    "name": "Anas Abudayah",
+    "email": "anas.abudayah@gmail.com",
+    "total_time": 19750,
+    "branches": {
+      "master": 19750
+    }
+  }
+}

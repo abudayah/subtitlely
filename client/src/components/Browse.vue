@@ -1,7 +1,7 @@
 <template>
   <div id="browse" class="container">
 
-    <h4 v-show="query">Search results for: {{query}}<hr></h4>
+    <h4 v-show="q">Search results for: {{q}}<hr></h4>
     
     <search-filters v-bind:total="total"></search-filters>
     
@@ -31,7 +31,11 @@ export default {
   },
   data () {
     return {
-      query: '',
+      q: null,
+      genre: null,
+      rating: null,
+      mpaa: null,
+      order: null,
       total: 0,
       results: []
     }
@@ -41,27 +45,38 @@ export default {
   },
   watch: {
     // call again the method if the route changes
-    '$route.query.q': 'getSearchResults'
+    '$route.query': 'getSearchResults'
   },
   methods: {
+    searchQuery () {
+      this.q = this.$route.query.q
+      this.genre = this.$route.query.genre
+      this.rating = this.$route.query.rating
+      this.mpaa = this.$route.query.mpaa
+      this.order = this.$route.query.order
+      let query = {}
+      query['$limit'] = 9
+      query['$sort'] = {}
+      query['$sort']['created_at'] = -1
+      if (this.q) {
+        query['title'] = {}
+        query['title']['$like'] = `%${this.q}%`
+      }
+      if (this.mpaa) {
+        query['mpaa'] = this.mpaa
+      }
+      return {query: query}
+    },
     getSearchResults () {
-      this.query = this.$route.query.q
-      if (typeof this.query !== 'undefined') {
-        services.movieService.find({
-          query: {
-            title: {
-              $like: '%' + this.query + '%'
-            },
-            $limit: 9,
-            $sort: {
-              created_at: -1
-            }
-          }
-        }).then(result => {
+      console.log(this.searchQuery())
+      if (Object.keys(this.$route.query).length !== 0) {
+        // Search
+        services.movieService.find(this.searchQuery()).then(result => {
           this.results = result.data
           this.total = result.total
         })
       } else {
+        // Get latest
         services.movieService.find({
           query: {
             $limit: 9,

@@ -26,7 +26,7 @@ export default {
   },
   methods: {
     search () {
-      var value = this.searchQuery && this.searchQuery.trim()
+      let value = this.searchQuery && this.searchQuery.trim()
       if (!value) {
         return
       }
