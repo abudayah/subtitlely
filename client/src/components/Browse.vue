@@ -1,12 +1,8 @@
 <template>
   <div id="browse" class="container">
-
     <h4 v-show="q">Search results for: {{q}}<hr></h4>
-    
     <search-filters v-bind:total="total"></search-filters>
-    
     <hr>
-    
     <div id="browse" class="row">
       <movie-card
         v-for="movie in results"
@@ -14,7 +10,6 @@
         v-bind:key="movie.id">
       </movie-card>
     </div>
-    
   </div>
 </template>
 
@@ -62,13 +57,23 @@ export default {
         query['title'] = {}
         query['title']['$like'] = `%${this.q}%`
       }
+      if (this.genre) {
+        query['genre'] = {}
+        query['genre']['$like'] = `%${this.genre}%`
+      }
+      if (this.rating) {
+        query['imdb_rating'] = {}
+        query['imdb_rating']['$gte'] = this.rating.replace('+', '')
+      }
       if (this.mpaa) {
         query['mpaa'] = this.mpaa
+      }
+      if (this.order) {
+        query['$sort']['release_date'] = (this.order === 'Release: Latest') ? -1 : 1
       }
       return {query: query}
     },
     getSearchResults () {
-      console.log(this.searchQuery())
       if (Object.keys(this.$route.query).length !== 0) {
         // Search
         services.movieService.find(this.searchQuery()).then(result => {
