@@ -5,7 +5,10 @@
     <filter-dropdown filter="mpaa" label="MPAA" v-bind:options="mpaa"></filter-dropdown>
     <filter-dropdown filter="order" label="Order By" v-bind:options="sorting"></filter-dropdown>
     <span class="results-found">
-      <strong>{{ total }}</strong> Results found <span v-show="selectedFilters">(<router-link :to="{ query: { q: this.$route.query.q } }">clear filters</router-link>)</span>
+      <strong>{{ total }}</strong> Results found
+    </span>
+    <span v-show="selectedFilters">
+      (<router-link :to="resetFilters">Reset filters</router-link>)
     </span>
   </div>
 </template>
@@ -46,6 +49,13 @@ export default {
         return true
       } else {
         return false
+      }
+    },
+    resetFilters () {
+      if (this.$route.query.q) {
+        return { path: 'browse', query: { q: this.$route.query.q } }
+      } else {
+        return { path: 'browse' }
       }
     }
   }
