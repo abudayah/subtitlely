@@ -38,7 +38,6 @@ export default {
         }
       }).then(result => {
         this.popular = result.data
-        console.log(JSON.stringify(result))
       })
     },
     clearSearchBar () {

@@ -2,9 +2,10 @@
   "anas.abudayah@gmail.com": {
     "name": "Anas Abudayah",
     "email": "anas.abudayah@gmail.com",
-    "total_time": 22750,
+    "total_time": 38590,
     "branches": {
-      "master": 22750
+      "master": 22750,
+      "pagination": 15840
     }
   }
 }

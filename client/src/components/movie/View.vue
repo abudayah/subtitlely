@@ -76,7 +76,6 @@ export default {
           }
         }).then(result => {
           this.movie = result.data[0]
-          console.log(result) // eslint-disable-line
         })
       }
       // @TODO what about this ?

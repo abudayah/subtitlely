@@ -3,6 +3,7 @@
     <h4 v-show="q">Search results for: {{q}}<hr></h4>
     <search-filters v-bind:total="total"></search-filters>
     <hr>
+    
     <div id="browse" class="row">
       <movie-card
         v-for="movie in results"
@@ -10,6 +11,8 @@
         v-bind:key="movie.id">
       </movie-card>
     </div>
+    
+    <pagination v-bind:paginate="paginate"></pagination>
   </div>
 </template>
 
@@ -17,12 +20,14 @@
 import * as services from '../services'
 import SearchFilters from '@/components/search/filters'
 import MovieCard from '@/components/movie/Card'
+import Pagination from '@/components/common/Pagination'
 
 export default {
   name: 'Browse',
   components: {
     MovieCard,
-    SearchFilters
+    SearchFilters,
+    Pagination
   },
   data () {
     return {
@@ -32,15 +37,26 @@ export default {
       mpaa: null,
       order: null,
       total: 0,
+      limit: 9,
+      paginate: {
+        pageCount: 0,
+        initialPage: 0
+      },
       results: []
     }
   },
   created () {
     this.getSearchResults()
+    this.paginate.initialPage = this.page - 1
   },
   watch: {
     // call again the method if the route changes
     '$route.query': 'getSearchResults'
+  },
+  computed: {
+    page () {
+      return this.$route.query.page || 1
+    }
   },
   methods: {
     searchQuery () {
@@ -50,7 +66,7 @@ export default {
       this.mpaa = this.$route.query.mpaa
       this.order = this.$route.query.order
       let query = {}
-      query['$limit'] = 9
+      query['$limit'] = this.limit
       query['$sort'] = {}
       query['$sort']['created_at'] = -1
       if (this.q) {
@@ -71,20 +87,25 @@ export default {
       if (this.order) {
         query['$sort']['release_date'] = (this.order === 'Release: Latest') ? -1 : 1
       }
+      if (this.page) {
+        query['$skip'] = this.page * 9
+      }
       return {query: query}
     },
     getSearchResults () {
+      // this.pagination()
       if (Object.keys(this.$route.query).length !== 0) {
         // Search
         services.movieService.find(this.searchQuery()).then(result => {
           this.results = result.data
           this.total = result.total
+          this.pagination(result.limit, result.total)
         })
       } else {
         // Get latest
         services.movieService.find({
           query: {
-            $limit: 9,
+            $limit: this.limit,
             $sort: {
               created_at: -1
             }
@@ -92,8 +113,13 @@ export default {
         }).then(result => {
           this.results = result.data
           this.total = result.total
+          this.pagination(result.limit, result.total)
         })
       }
+    },
+    pagination (limit = this.limit, total = 0) {
+      this.paginate.pageCount = Math.floor(total / limit)
+      return this.paginate
     }
   }
 }

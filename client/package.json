@@ -25,7 +25,8 @@
     "popper.js": "^1.12.9",
     "sass-loader": "^6.0.6",
     "vue": "^2.5.2",
-    "vue-router": "^3.0.1"
+    "vue-router": "^3.0.1",
+    "vuejs-paginate": "^1.6.0"
   },
   "devDependencies": {
     "autoprefixer": "^7.1.2",
