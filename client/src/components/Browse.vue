@@ -93,7 +93,6 @@ export default {
       return {query: query}
     },
     getSearchResults () {
-      // this.pagination()
       if (Object.keys(this.$route.query).length !== 0) {
         // Search
         services.movieService.find(this.searchQuery()).then(result => {
@@ -119,6 +118,7 @@ export default {
     },
     pagination (limit = this.limit, total = 0) {
       this.paginate.pageCount = Math.floor(total / limit)
+      console.log(this.paginate)
       return this.paginate
     }
   }

@@ -2,8 +2,8 @@
 
 const beforeCreate = require('../../hooks/before-create');
 const afterCreate = require('../../hooks/after-create');
+const afterCreate = require('../../hooks/imageUrl');
 
-// @TODO @Yazan: man this shit is working :)
 // Postman: http://localhost:3030/movies/50
 const hydrate = require('feathers-sequelize/hooks/hydrate');
 function includeParser() {
@@ -23,6 +23,16 @@ function includeParser() {
       hydrate( association ).call(this, hook);
       break;
     }
+  };
+}
+
+function getImageUrl() {
+  return function (hook) {
+    console.log(hook); // eslint-disable-line
+    hook.results.image_url = 'http://localhost:3030/images/' + hook.data.image_url;
+    console.log(hook); // eslint-disable-line
+    
+    return Promise.resolve(hook);
   };
 }
 
@@ -53,7 +63,7 @@ module.exports = {
   before: {
     all: [],
     find: [],
-    get: [ includeParser() ],
+    get: [ includeParser(), getImageUrl() ],
     create: [ beforeCreate() ],
     update: [],
     patch: [],

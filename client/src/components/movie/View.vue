@@ -5,7 +5,7 @@
         <div class="col-sm-7">
           <div class="row no-gutters">
             <div class="col-sm-4">
-              <!-- <img :src="require('@/assets/' + movie.image_uri)" class="img-fluid" /> -->
+              <img src="{{ movie.image_uri }}" class="img-fluid" />
             </div>
             <div class="col-sm-8">
               <div class="movie-info">
@@ -36,9 +36,7 @@
         </div>
         <div class="col-sm-5 download-area">
           <span>Download the best accurate movie for Arabic language (<a href="#">other languages</a>)</span>
-          
           <download-button></download-button>
-          
         </div>
       </div>
     </div>
