@@ -5,7 +5,7 @@
         <div class="col-sm-7">
           <div class="row no-gutters">
             <div class="col-sm-4">
-              <img src="{{ movie.image_uri }}" class="img-fluid" />
+              <img :src="imageUrl" class="img-fluid" />
             </div>
             <div class="col-sm-8">
               <div class="movie-info">
@@ -63,6 +63,11 @@ export default {
     return {
       id: this.$route.params.id,
       movie: []
+    }
+  },
+  computed: {
+    imageUrl () {
+      return (this.movie.image_url) ? `http://localhost:3030/images/${this.movie.image_url}` : 'http://via.placeholder.com/181x268'
     }
   },
   methods: {

@@ -2,7 +2,6 @@
 
 const beforeCreate = require('../../hooks/before-create');
 const afterCreate = require('../../hooks/after-create');
-const afterCreate = require('../../hooks/imageUrl');
 
 // Postman: http://localhost:3030/movies/50
 const hydrate = require('feathers-sequelize/hooks/hydrate');
@@ -23,16 +22,6 @@ function includeParser() {
       hydrate( association ).call(this, hook);
       break;
     }
-  };
-}
-
-function getImageUrl() {
-  return function (hook) {
-    console.log(hook); // eslint-disable-line
-    hook.results.image_url = 'http://localhost:3030/images/' + hook.data.image_url;
-    console.log(hook); // eslint-disable-line
-    
-    return Promise.resolve(hook);
   };
 }
 
@@ -63,7 +52,7 @@ module.exports = {
   before: {
     all: [],
     find: [],
-    get: [ includeParser(), getImageUrl() ],
+    get: [ includeParser() ],
     create: [ beforeCreate() ],
     update: [],
     patch: [],

@@ -23,7 +23,7 @@ export default {
   props: ['movie'],
   computed: {
     imageUrl () {
-      return (this.movie.image_url) ? this.movie.image_url : 'http://via.placeholder.com/155x230'
+      return (this.movie.image_url) ? `http://localhost:3030/images/${this.movie.image_url}` : 'http://via.placeholder.com/155x230'
     }
   }
 }
