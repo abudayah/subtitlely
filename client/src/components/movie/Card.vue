@@ -4,7 +4,6 @@
 			<div class="row no-gutters">
 				<div class="col-sm-5">
 					<img :src="imageUrl" class="img-fluid" />
-					<!-- <img :src="require('@/assets/' + movie.image_uri)" class="img-fluid" /> -->
 				</div>
 				<div class="col-sm-7 info-col">
 					<h4>{{ movie.title }}</h4>
