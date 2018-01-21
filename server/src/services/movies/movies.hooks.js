@@ -3,7 +3,6 @@
 const beforeCreate = require('../../hooks/before-create');
 const afterCreate = require('../../hooks/after-create');
 
-// @TODO @Yazan: man this shit is working :)
 // Postman: http://localhost:3030/movies/50
 const hydrate = require('feathers-sequelize/hooks/hydrate');
 function includeParser() {

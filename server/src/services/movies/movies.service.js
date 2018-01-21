@@ -7,16 +7,14 @@ const filters = require('./movies.filters');
 module.exports = function () {
   const app = this;
   const Model = createModel(app);
-  const paginate = app.get('paginate');
+  // const paginate = app.get('paginate');
 
   const options = {
     name: 'movies',
     Model,
-    paginate
-    // paginate: {
-    //   max: 1000,
-    //   default: 1000
-    // }
+    paginate: {
+      default: 9
+    }
   };
 
   // Initialize our service with any options it requires

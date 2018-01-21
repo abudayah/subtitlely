@@ -24,6 +24,7 @@ export default {
     querystring (value) {
       let newQuery = {}
       newQuery[this.filter] = value
+      newQuery['page'] = 1
       return { query: Object.assign({}, this.$route.query, newQuery) }
     },
     ActiveLabel () {

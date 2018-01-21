@@ -5,7 +5,7 @@
         <div class="col-sm-7">
           <div class="row no-gutters">
             <div class="col-sm-4">
-              <!-- <img :src="require('@/assets/' + movie.image_uri)" class="img-fluid" /> -->
+              <img :src="imageUrl" class="img-fluid" />
             </div>
             <div class="col-sm-8">
               <div class="movie-info">
@@ -36,9 +36,7 @@
         </div>
         <div class="col-sm-5 download-area">
           <span>Download the best accurate movie for Arabic language (<a href="#">other languages</a>)</span>
-          
           <download-button></download-button>
-          
         </div>
       </div>
     </div>
@@ -67,6 +65,11 @@ export default {
       movie: []
     }
   },
+  computed: {
+    imageUrl () {
+      return (this.movie.image_url) ? `http://localhost:3030/images/${this.movie.image_url}` : 'http://via.placeholder.com/181x268'
+    }
+  },
   methods: {
     fetchSingle () {
       if (typeof this.id !== 'undefined') {
@@ -76,7 +79,6 @@ export default {
           }
         }).then(result => {
           this.movie = result.data[0]
-          console.log(result) // eslint-disable-line
         })
       }
       // @TODO what about this ?
