@@ -28,6 +28,14 @@ module.exports = function (app) {
       type: DataTypes.STRING,
       allowNull: true
     },
+    season: {
+      type: DataTypes.INTEGER,
+      allowNull: true
+    },
+    episode: {
+      type: DataTypes.INTEGER,
+      allowNull: true
+    },
     votes_up: {
       type: DataTypes.INTEGER,
       allowNull: true,

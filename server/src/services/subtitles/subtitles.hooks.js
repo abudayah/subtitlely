@@ -1,5 +1,6 @@
 const beforeCreate = require('../../hooks/before-create');
 const afterCreate = require('../../hooks/after-create');
+const setTotalSubtitles = require('../../hooks/subtitles/setTotalSubtitles');
 
 module.exports = {
   before: {
@@ -16,7 +17,7 @@ module.exports = {
     all: [],
     find: [],
     get: [],
-    create: [ afterCreate() ],
+    create: [ afterCreate(), setTotalSubtitles() ],
     update: [],
     patch: [],
     remove: []

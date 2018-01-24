@@ -9,7 +9,6 @@
 					<h4>{{ movie.title }}</h4>
 					<p class="text-muted">{{ movie.release_date }}</p>
 					<div><strong>{{ movie.total_subtitles }}</strong> Subtitles</div>
-					<div><strong>{{ movie.total_languages }}</strong> Languages</div>
 				</div>
 			</div>
 		</router-link>

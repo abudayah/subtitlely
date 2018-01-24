@@ -41,6 +41,11 @@ module.exports = function (app) {
       type: DataTypes.INTEGER,
       allowNull: false
     },
+    total_subtitles: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      default: 0
+    },
     created_at: {
       type: DataTypes.INTEGER,
       allowNull: false,

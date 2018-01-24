@@ -10,7 +10,7 @@
             <div class="col-sm-8">
               <div class="movie-info">
                 <h1>{{ movie.title }}</h1>
-                <div class="movie-status"><a href="#">{{ movie.total_languages }} Language / {{ movie.total_movies }} movies</a></div>
+                <div class="movie-status"><a href="#">{{ movie.total_subtitles }} subtitles</a></div>
                 
                 <div class="row movie-info-grid">
                   <div class="col-sm-6">
