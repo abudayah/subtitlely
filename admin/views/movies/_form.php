@@ -12,25 +12,17 @@ use yii\widgets\ActiveForm;
 
     <?php $form = ActiveForm::begin(); ?>
 
-    <?= $form->field($model, 'hash_id')->textInput(['maxlength' => true]) ?>
-
     <?= $form->field($model, 'title')->textInput(['maxlength' => true]) ?>
 
     <?= $form->field($model, 'image_url')->textInput(['maxlength' => true]) ?>
 
     <?= $form->field($model, 'genre')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'imdb_rating')->textInput() ?>
+    <?= $form->field($model, 'imdb_rating')->input(['min'=>1,'step'=>0.1]) ?>
 
     <?= $form->field($model, 'mpaa')->textInput(['maxlength' => true]) ?>
 
     <?= $form->field($model, 'release_date')->textInput() ?>
-
-    <?= $form->field($model, 'total_subtitles')->textInput() ?>
-
-    <?= $form->field($model, 'created_at')->textInput() ?>
-
-    <?= $form->field($model, 'updated_at')->textInput() ?>
 
     <div class="form-group">
         <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>

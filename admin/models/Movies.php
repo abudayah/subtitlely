@@ -3,6 +3,7 @@
 namespace app\models;
 
 use Yii;
+use yii\behaviors\TimestampBehavior;
 
 /**
  * This is the model class for table "movies".
@@ -30,6 +31,15 @@ class Movies extends \yii\db\ActiveRecord
     {
         return 'movies';
     }
+    
+    public function behaviors()
+    {
+        return [
+            [
+                'class' => TimestampBehavior::className(),
+            ],
+        ];
+    }
 
     /**
      * @inheritdoc
@@ -37,7 +47,7 @@ class Movies extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['title', 'genre', 'imdb_rating', 'mpaa', 'release_date', 'created_at', 'updated_at'], 'required'],
+            [['title', 'genre', 'imdb_rating', 'mpaa', 'release_date'], 'required'],
             [['imdb_rating'], 'number'],
             [['release_date', 'total_subtitles', 'created_at', 'updated_at'], 'integer'],
             [['hash_id', 'title', 'image_url', 'genre', 'mpaa'], 'string', 'max' => 255],

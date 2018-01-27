@@ -43,7 +43,7 @@ module.exports = function (app) {
     },
     total_subtitles: {
       type: DataTypes.INTEGER,
-      allowNull: false,
+      allowNull: true,
       default: 0
     },
     created_at: {

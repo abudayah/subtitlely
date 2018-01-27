@@ -58,7 +58,7 @@ export default {
     font-size: 20px;
     right: 0;
     top: 0;
-    height: 48px;
+    height: 42px;
     line-height: 100%;
     
     .fa-search{
