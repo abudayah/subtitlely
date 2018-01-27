@@ -37,7 +37,7 @@ export default {
       mpaa: null,
       order: null,
       total: 0,
-      limit: 9,
+      limit: 6,
       paginate: {
         pageCount: 0,
         initialPage: 0
@@ -88,7 +88,7 @@ export default {
         query['$sort']['release_date'] = (this.order === 'Release: Latest') ? -1 : 1
       }
       if (this.page) {
-        query['$skip'] = this.page * 9
+        query['$skip'] = (this.page === 1) ? 0 : ( this.page - 1 ) * this.limit
       }
       return {query: query}
     },

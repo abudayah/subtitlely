@@ -49,12 +49,12 @@ module.exports = function (app) {
     created_at: {
       type: DataTypes.INTEGER,
       allowNull: false,
-      default: Date.now()
+      default: Math.round(Date.now() / 1000)
     },
     updated_at: {
       type: DataTypes.INTEGER,
       allowNull: false,
-      default: Date.now()
+      default: Math.round(Date.now() / 1000)
     }
   }, {
     timestamps  : false,

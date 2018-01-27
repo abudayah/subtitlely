@@ -34,7 +34,10 @@ export default {
     getPopular () {
       services.movieService.find({
         query: {
-          $limit: 6
+          $limit: 6,
+          $sort: {
+            created_at: -1
+          }
         }
       }).then(result => {
         this.popular = result.data
