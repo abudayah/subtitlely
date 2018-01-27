@@ -2,28 +2,7 @@
 
 const beforeCreate = require('../../hooks/before-create');
 const afterCreate = require('../../hooks/after-create');
-
-// Postman: http://localhost:3030/movies/50
-const hydrate = require('feathers-sequelize/hooks/hydrate');
-function includeParser() {
-  return function (hook) {
-    const model = hook.app.service('subtitles').Model;
-    const association = {
-      include:[
-        { model: model }
-      ]
-    };
-
-    switch (hook.type) {
-    case 'before':
-      hook.params.sequelize = Object.assign(association, { raw: false });
-      return Promise.resolve(hook);
-    case 'after':
-      hydrate( association ).call(this, hook);
-      break;
-    }
-  };
-}
+const relations = require('../../hooks/movies/relations.jpg');
 
 // @REVIEW to search a query just write this
 // http://localhost:3030/movies?title[$like]=%The%
@@ -52,7 +31,7 @@ module.exports = {
   before: {
     all: [],
     find: [],
-    get: [ includeParser() ],
+    get: [ relations() ],
     create: [ beforeCreate() ],
     update: [],
     patch: [],
