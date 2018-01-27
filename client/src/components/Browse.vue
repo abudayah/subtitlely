@@ -88,7 +88,7 @@ export default {
         query['$sort']['release_date'] = (this.order === 'Release: Latest') ? -1 : 1
       }
       if (this.page) {
-        query['$skip'] = (this.page === 1) ? 0 : ( this.page - 1 ) * this.limit
+        query['$skip'] = (this.page === 1) ? 0 : (this.page - 1) * this.limit
       }
       return {query: query}
     },

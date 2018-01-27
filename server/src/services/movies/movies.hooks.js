@@ -2,7 +2,7 @@
 
 const beforeCreate = require('../../hooks/before-create');
 const afterCreate = require('../../hooks/after-create');
-const relations = require('../../hooks/movies/relations.jpg');
+const relations = require('../../hooks/movies/relations');
 
 // @REVIEW to search a query just write this
 // http://localhost:3030/movies?title[$like]=%The%
