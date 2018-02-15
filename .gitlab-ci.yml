@@ -2,11 +2,11 @@
 # Test - Run tests
 # Deploy - Deploy application to S3/ElasticBeanstalk
 stages:
-  - build
+    - build
   
 # Job: Build
 build:
   stage: build
   script:
     - cd ./server
-    - yarn install
+    - npm install
