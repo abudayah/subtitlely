@@ -5,6 +5,10 @@ image: node:8
 stages:
     - build
     - deploy
+    
+cache:
+  paths:
+  - ./server/node_modules/
   
 # Job: Build
 build:
@@ -12,8 +16,13 @@ build:
   script:
     - cd ./server
     - npm install
+    - cd ../client
+    - npm install
 
 deploy:
     stage: deploy
     script:
+        - cd ./server
+        - npm run start
         - cd ../client
+        - npm run start
