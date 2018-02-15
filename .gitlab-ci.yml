@@ -1,3 +1,4 @@
+image: node:8
 # Build - Build necessary JS files
 # Test - Run tests
 # Deploy - Deploy application to S3/ElasticBeanstalk
