@@ -4,6 +4,7 @@ image: node:8
 # Deploy - Deploy application to S3/ElasticBeanstalk
 stages:
     - build
+    - deploy
   
 # Job: Build
 build:
@@ -11,3 +12,6 @@ build:
   script:
     - cd ./server
     - npm install
+
+deploy:
+    - cd ../client
