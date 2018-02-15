@@ -1,0 +1,14 @@
+# Build - Build necessary JS files
+# Test - Run tests
+# Deploy - Deploy application to S3/ElasticBeanstalk
+stages:
+  - build
+  
+# Job: Build
+# Installs npm packages, transpiles ES6 -> ES5
+# Passes node_modules/, dist/ onto next steps using artifacts
+build:
+  stage: build
+  script:
+    - ./server
+    - yarn install
