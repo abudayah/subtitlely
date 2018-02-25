@@ -1,15 +1,17 @@
 ## How to run the project ?
 
-node version: `lts/carbon`
+Make sure it's node version: `lts/carbon` v8
 
 #### Run server
 - create mysql database
 - change database connection from: `server/config/default.json` 
 - import the database from: `server/database/subtitlely.sql`
+- cd server
 - yarn install
 - yarn start
 
 #### Run client
+- cd client
 - yarn install
 - yarn start
 - go to http://localhost:8080
