@@ -6,5 +6,5 @@
     "default": 10,
     "max": 50
   },
-  "mysql": "mysql://root:root@localhost:8889/subtitlely"
+  "mysql": "mysql://root:mysql007009@165.227.133.18:3306/subtitlely"
 }
