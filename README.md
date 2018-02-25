@@ -1,6 +1,6 @@
 ## How to run the project ?
 
-Make sure it's node version: `lts/carbon`
+Make sure it's node version: `lts/carbon` v8
 
 #### Run server
 - create mysql database
