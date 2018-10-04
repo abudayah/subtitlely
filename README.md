@@ -1,3 +1,7 @@
+## Technology stack
+- Back-end: NodeJs (feathersjs), MySQL
+- Front-end: VueJs 2, Bootstrap
+
 ## How to run the project ?
 
 Make sure it's node version: `lts/carbon` v8
